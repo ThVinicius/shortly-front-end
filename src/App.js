@@ -6,7 +6,7 @@ import PageContainer from './containers/page/PageContainer'
 import Header from './components/header/Header'
 import Login from './pages/login/main/Login'
 import Register from './pages/register/main/Register'
-import Home from './pages/home/main/Home'
+import Ranking from './pages/ranking/main/Ranking'
 
 export default function App() {
   return (
@@ -19,7 +19,7 @@ export default function App() {
           <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Ranking />} />
           </Routes>
         </PageContainer>
       </GlobalProvider>

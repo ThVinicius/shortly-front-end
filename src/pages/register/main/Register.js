@@ -1,17 +1,13 @@
 import { useNavigate } from 'react-router-dom'
-import logo from '../../../assets/images/logo.svg'
+import Logo from '../../../components/logo/Logo'
 import Form from '../form/Form'
-import { Logo } from './styles'
 
 export default function Register() {
   const navigate = useNavigate()
 
   return (
     <>
-      <Logo onClick={() => navigate('/')}>
-        <h1>Shortly</h1>
-        <img src={logo} alt="logo" />
-      </Logo>
+      <Logo />
       <Form navigate={navigate} />
     </>
   )
