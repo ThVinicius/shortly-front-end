@@ -34,6 +34,7 @@ export default function Form({ navigate }) {
       />
       <Input
         placeholder="E-mail"
+        type="email"
         value={email}
         onChange={setEmail}
         loading={loading}
