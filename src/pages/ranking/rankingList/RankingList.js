@@ -5,8 +5,8 @@ export default function RankingList({ ranking }) {
   const spinner = <RotatingLines strokeColor="#5D9040" />
 
   const rankingList = () =>
-    ranking.map(({ name, linksCount, visitCount }, i) => (
-      <li key={i}>
+    ranking.map(({ name, linksCount, visitCount }, index) => (
+      <li key={index}>
         {name} - {linksCount} links - {visitCount} visualizações
       </li>
     ))

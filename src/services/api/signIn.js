@@ -16,7 +16,7 @@ export default function signIn(
     .then(({ data }) => {
       setGlobal({ ...global, token: data })
 
-      navigate('/')
+      navigate('/logged')
     })
     .catch(({ response }) => {
       console.log(response)

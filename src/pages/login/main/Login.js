@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router-dom'
-import Logo from '../../../components/logo/Logo'
 import Form from '../form/Form'
 
 export default function Login() {
@@ -7,7 +6,6 @@ export default function Login() {
 
   return (
     <>
-      <Logo />
       <Form navigate={navigate} />
     </>
   )

@@ -7,19 +7,19 @@ export default function Auth() {
   const { global, setGlobal } = useGlobal()
 
   function logout() {
-    setGlobal({ ...global, token: null })
+    setGlobal({ ...global, token: null, customer: null })
 
     navigate('/')
   }
 
   return (
     <Header>
-      <h6>Seja bem-vindo(a), Pessoa!</h6>
+      <h6>Seja bem-vindo(a), {global.customer.name}!</h6>
       <div>
-        <Link to="/">
+        <Link to="/logged">
           <h5>Home</h5>
         </Link>
-        <Link to="/ranking">
+        <Link to="/">
           <h5>Ranking</h5>
         </Link>
         <h5 onClick={logout}>Sair</h5>

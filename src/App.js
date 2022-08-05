@@ -7,6 +7,7 @@ import Header from './components/header/Header'
 import Login from './pages/login/main/Login'
 import Register from './pages/register/main/Register'
 import Ranking from './pages/ranking/main/Ranking'
+import Logged from './pages/logged/main/Logged'
 
 export default function App() {
   return (
@@ -20,6 +21,7 @@ export default function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/" element={<Ranking />} />
+            <Route path="/logged" element={<Logged />} />
           </Routes>
         </PageContainer>
       </GlobalProvider>

@@ -3,7 +3,7 @@ import { Container } from './styles'
 export default function Input({
   type = 'text',
   placeholder,
-  width = '769px',
+  width = '53.40vw',
   height = '60px',
   loading = false,
   minLength = '',

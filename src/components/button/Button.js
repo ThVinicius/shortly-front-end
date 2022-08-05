@@ -3,7 +3,7 @@ import { ThreeDots } from 'react-loader-spinner'
 
 export default function Button({
   name,
-  width = '182px',
+  width = '12.63vw',
   height = '60px',
   backgroundColor = '#5D9040',
   loading = false
