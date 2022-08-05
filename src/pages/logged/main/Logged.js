@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useGlobal } from '../../../context/globalContext'
 import Form from '../form/Form'
-import Links from '../links/Links'
+import Links from '../linksContainer/Links'
 
 export default function Logged() {
   const [links, setLinks] = useState(null)
@@ -9,7 +9,7 @@ export default function Logged() {
 
   return (
     <>
-      <Form global={global} setLinks={setLinks} />
+      <Form global={global} links={links} setLinks={setLinks} />
       <Links
         links={links}
         setLinks={setLinks}

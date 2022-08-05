@@ -1,7 +1,10 @@
 import { authApi } from './api'
 import getLinks from './getLinks'
+import { CONFLICT } from '../../constants/HTTP'
 
-export default function createLink(global, payload, setLoading, setLinks) {
+function createLink(global, payload, setLoading, links, setLinks) {
+  const backUpLinks = links
+
   setLinks(null)
 
   const URL = '/urls/shorten'
@@ -14,9 +17,17 @@ export default function createLink(global, payload, setLoading, setLinks) {
 
       setLoading(false)
     })
-    .catch(err => {
-      console.log(err)
+    .catch(({ response }) => {
+      if (response.status === CONFLICT) {
+        alert(`Não é possivel encurta a mesma url mais de uma vez!`)
+      } else {
+        alert('Ocorreu um  erro inesperado, tente mais tarde')
+      }
+
+      setLinks(backUpLinks)
 
       setLoading(false)
     })
 }
+
+export default createLink

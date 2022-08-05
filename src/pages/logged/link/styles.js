@@ -1,15 +1,6 @@
 import styled from 'styled-components'
 import { FaTrashAlt } from 'react-icons/fa'
 
-const Container = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  margin-top: 58px;
-`
 const LinkContainer = styled.div`
   width: 100%;
   height: 60px;
@@ -27,6 +18,15 @@ const LinkContainer = styled.div`
     box-shadow: 0px 4px 24px rgba(120, 177, 89, 0.12);
     border-radius: 12px 0px 0px 12px;
     cursor: pointer;
+
+    h6 {
+      max-width: 19vw;
+      font: normal 400 14px 'Lexend Deca', sans-serif;
+      color: #ffffff;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
 
     p {
       font: normal 400 14px 'Lexend Deca', sans-serif;
@@ -53,4 +53,4 @@ const TrashAlt = styled(FaTrashAlt)`
   cursor: pointer;
 `
 
-export { Container, LinkContainer, TrashAlt }
+export { LinkContainer, TrashAlt }

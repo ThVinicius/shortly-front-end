@@ -1,15 +1,10 @@
 import { Container } from './styles'
 
-export default function Input({
-  type = 'text',
-  placeholder,
-  width = '53.40vw',
-  height = '60px',
-  loading = false,
-  minLength = '',
-  value,
-  onChange
-}) {
+export default function Input(props) {
+  const { type = 'text', width = '53.40vw', height = '60px' } = props
+  const { loading = false, minLength = '', maxLength = '' } = props
+  const { placeholder, value, onChange } = props
+
   function loadingInput() {
     if (loading === false) return { backGround: '#ffffff', disabled: false }
 
@@ -24,7 +19,7 @@ export default function Input({
       type={type}
       required
       minLength={minLength}
-      maxLength={minLength}
+      maxLength={maxLength}
       disabled={loadingInput().disabled}
       placeholder={placeholder}
       value={value}
