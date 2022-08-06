@@ -11,7 +11,7 @@ export default function Auth() {
     <Header>
       <h6>Seja bem-vindo(a), {global.customer.name}!</h6>
       <div>
-        <Link to="/logged">
+        <Link to="/home">
           <h5>Home</h5>
         </Link>
         <Link to="/">

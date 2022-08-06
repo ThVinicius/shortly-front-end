@@ -16,7 +16,7 @@ export default function Ranking() {
     if (token !== null && global.token === null) {
       global.token = JSON.parse(token)
 
-      return navigate('/logged')
+      return navigate('/home')
     }
 
     getRanking(setRanking)

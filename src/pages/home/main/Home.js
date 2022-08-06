@@ -4,7 +4,7 @@ import { useGlobal } from '../../../context/globalContext'
 import Form from '../form/Form'
 import Links from '../linksContainer/Links'
 
-export default function Logged() {
+export default function Home() {
   const [links, setLinks] = useState(null)
   const { global, setGlobal } = useGlobal()
   const navigate = useNavigate()

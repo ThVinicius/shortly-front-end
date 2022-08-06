@@ -1,11 +1,10 @@
 import { api } from './api'
+import { CONFLICT, UNPROCESSABLE_ENTITY } from '../../constants/HTTP'
 
 export default function signUp(payload, setLoading, navigate) {
   const URL = '/signup'
 
   const promise = api.post(URL, payload)
-
-  //tratar os erros do cadastro, e do login
 
   promise
     .then(() => {
@@ -13,8 +12,28 @@ export default function signUp(payload, setLoading, navigate) {
 
       navigate('/login')
     })
-    .catch(res => {
-      console.log(res)
+    .catch(({ response }) => {
+      switch (response.status) {
+        case CONFLICT:
+          alert(
+            'Esse email já está em uso!\nescolha outro para prosseguir com o cadastro'
+          )
+          break
+
+        case UNPROCESSABLE_ENTITY:
+          let message = ''
+
+          for (const err of response.data) {
+            message += err + '\n'
+          }
+
+          alert(message)
+          break
+
+        default:
+          break
+      }
+
       setLoading(false)
     })
 }

@@ -28,7 +28,7 @@ export default function Form({ navigate }) {
     <FormContainer submit={submit}>
       <Input
         placeholder="Nome"
-        maxLength="48"
+        maxLength="40"
         value={name}
         onChange={setName}
         loading={loading}

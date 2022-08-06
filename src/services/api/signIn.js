@@ -19,7 +19,7 @@ export default function signIn(
       const tokenStringify = JSON.stringify(data)
       localStorage.setItem('token', tokenStringify)
 
-      navigate('/logged')
+      navigate('/home')
     })
     .catch(({ response }) => {
       switch (response.status) {
