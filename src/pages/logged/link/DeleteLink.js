@@ -1,12 +1,14 @@
 import { useState } from 'react'
 import { useGlobal } from '../../../context/globalContext'
+import { useNavigate } from 'react-router-dom'
 import deleteUrl from '../../../services/api/deleteUrl'
 import { TailSpin } from 'react-loader-spinner'
 import { TrashAlt } from './styles'
 
 export default function DeleteLink({ link, links, setLinks }) {
   const [loading, setLoading] = useState(false)
-  const { global } = useGlobal()
+  const { global, setGlobal } = useGlobal()
+  const navigate = useNavigate()
   const { id, url } = link
 
   function confirmDelete() {
@@ -16,7 +18,9 @@ export default function DeleteLink({ link, links, setLinks }) {
       `O link da url ${url} será apagado!\nVocê confirma essa ação?`
     )
 
-    if (confirm) deleteUrl(id, global, links, setLinks, setLoading)
+    const useGlobal = { global, setGlobal }
+
+    if (confirm) deleteUrl(id, useGlobal, links, setLinks, setLoading, navigate)
   }
 
   const spinner = <TailSpin height="45" width="45" color="#4fa94d" />

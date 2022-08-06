@@ -4,9 +4,15 @@ import Link from '../link/Link'
 import { RotatingLines } from 'react-loader-spinner'
 import { Container } from './styles'
 
-export default function Links({ links, setLinks, global, setGlobal }) {
+function Links({ links, setLinks, global, setGlobal, navigate }) {
   useEffect(() => {
-    getLinks(global, setLinks, setGlobal)
+    const token = localStorage.getItem('token')
+
+    if (token !== null && global.token === null) {
+      global.token = JSON.parse(token)
+    }
+
+    getLinks(global, setLinks, setGlobal, navigate)
   }, [])
 
   const spinner = <RotatingLines strokeColor="#5D9040" />
@@ -24,3 +30,5 @@ export default function Links({ links, setLinks, global, setGlobal }) {
 
   return <Container>{links === null ? spinner : linkList()}</Container>
 }
+
+export default Links

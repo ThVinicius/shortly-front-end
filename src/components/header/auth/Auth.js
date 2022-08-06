@@ -1,16 +1,11 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { useGlobal } from '../../../context/globalContext'
+import logout from '../../../utils/logout'
 import { Header } from './styles'
 
 export default function Auth() {
   const navigate = useNavigate()
   const { global, setGlobal } = useGlobal()
-
-  function logout() {
-    setGlobal({ ...global, token: null, customer: null })
-
-    navigate('/')
-  }
 
   return (
     <Header>
@@ -22,7 +17,7 @@ export default function Auth() {
         <Link to="/">
           <h5>Ranking</h5>
         </Link>
-        <h5 onClick={logout}>Sair</h5>
+        <h5 onClick={() => logout(global, setGlobal, navigate)}>Sair</h5>
       </div>
     </Header>
   )

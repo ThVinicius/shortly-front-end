@@ -16,11 +16,12 @@ export default function signIn(
     .then(({ data }) => {
       setGlobal({ ...global, token: data })
 
+      const tokenStringify = JSON.stringify(data)
+      localStorage.setItem('token', tokenStringify)
+
       navigate('/logged')
     })
     .catch(({ response }) => {
-      console.log(response)
-
       switch (response.status) {
         case UNAUTHORIZED:
           alert('Email ou senha inválido')

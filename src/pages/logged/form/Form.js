@@ -5,14 +5,16 @@ import Button from '../../../components/button/Button'
 import createLink from '../../../services/api/createLink'
 import { InputContainer } from './styles'
 
-export default function Form({ global, links, setLinks }) {
+export default function Form({ global, setGlobal, links, setLinks, navigate }) {
   const [url, setUrl] = useState('')
   const [loading, setLoading] = useState(false)
 
   function submit(event) {
     event.preventDefault()
 
-    createLink(global, { url }, setLoading, links, setLinks)
+    const useGlobal = { global, setGlobal }
+
+    createLink(useGlobal, { url }, setLoading, links, setLinks, navigate)
   }
 
   return (

@@ -5,6 +5,8 @@ export default function signUp(payload, setLoading, navigate) {
 
   const promise = api.post(URL, payload)
 
+  //tratar os erros do cadastro, e do login
+
   promise
     .then(() => {
       alert('Cadastro realizado com sucesso!')
