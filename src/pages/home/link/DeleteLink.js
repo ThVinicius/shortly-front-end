@@ -5,7 +5,7 @@ import deleteUrl from '../../../services/api/deleteUrl'
 import { TailSpin } from 'react-loader-spinner'
 import { TrashAlt } from './styles'
 
-export default function DeleteLink({ link, links, setLinks }) {
+export default function DeleteLink({ link, links, setLinks, linksFilter }) {
   const [loading, setLoading] = useState(false)
   const { global, setGlobal } = useGlobal()
   const navigate = useNavigate()
@@ -20,7 +20,10 @@ export default function DeleteLink({ link, links, setLinks }) {
 
     const useGlobal = { global, setGlobal }
 
-    if (confirm) deleteUrl(id, useGlobal, links, setLinks, setLoading, navigate)
+    const aux = { links, setLinks }
+
+    if (confirm)
+      deleteUrl(id, useGlobal, aux, setLoading, navigate, linksFilter)
   }
 
   const spinner = <TailSpin height="45" width="45" color="#4fa94d" />

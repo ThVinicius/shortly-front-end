@@ -3,10 +3,12 @@ import logout from '../../utils/logout'
 import { TOKEN_EXPIRED, UNAUTHORIZED } from '../../constants/HTTP'
 import { UPGRADE_REQUIRED } from '../../constants/HTTP'
 
-function deleteUrl(id, useGlobal, links, setLinks, setLoading, navigate) {
+function deleteUrl(id, useGlobal, aux, setLoading, navigate, linksFilter) {
   setLoading(true)
 
   const { global, setGlobal } = useGlobal
+
+  const { links, setLinks } = aux
 
   const URL = `/urls/${id}`
 
@@ -15,6 +17,10 @@ function deleteUrl(id, useGlobal, links, setLinks, setLoading, navigate) {
   promise
     .then(() => {
       setLoading(false)
+
+      if (linksFilter.arr.length > 0) {
+        linksFilter.arr = linksFilter.arr.filter(link => link.id !== id)
+      }
 
       setLinks(links.filter(link => link.id !== id))
     })

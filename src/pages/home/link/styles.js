@@ -9,7 +9,7 @@ const LinkContainer = styled.div`
   border-radius: 12px;
 
   span {
-    width: 100%;
+    width: calc(100% - 130px);
     height: 100%;
     display: flex;
     align-items: center;
@@ -20,7 +20,7 @@ const LinkContainer = styled.div`
     cursor: pointer;
 
     h6 {
-      max-width: 19vw;
+      max-width: 35%;
       font: normal 400 14px 'Lexend Deca', sans-serif;
       color: #ffffff;
       overflow: hidden;

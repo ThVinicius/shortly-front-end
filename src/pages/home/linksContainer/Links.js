@@ -1,34 +1,69 @@
-import { useEffect } from 'react'
-import getLinks from '../../../services/api/getLinks'
+import { useState } from 'react'
 import Link from '../link/Link'
 import { RotatingLines } from 'react-loader-spinner'
-import { Container } from './styles'
+import { Container, InputContainer, Search } from './styles'
+import SearchInput from './SearchInput'
+import SelectFilter from './SelectFilter'
 
-function Links({ links, setLinks, global, setGlobal, navigate }) {
-  useEffect(() => {
-    const token = localStorage.getItem('token')
+export default function Links({ links, setLinks, global }) {
+  const [search, setSearch] = useState('')
+  const [select, setSelect] = useState('')
+  const [linksFilter] = useState({ arr: [] })
+  const [displayInputs, setDisplayInputs] = useState(false)
 
-    if (token !== null && global.token === null) {
-      global.token = JSON.parse(token)
-    }
-
-    getLinks(global, setLinks, setGlobal, navigate)
-  }, [])
-
-  const spinner = <RotatingLines strokeColor="#5D9040" />
-
-  const linkList = () =>
-    links.map((link, index) => (
+  const linkContainer = array =>
+    array.map((link, index) => (
       <Link
         link={link}
         links={links}
         setLinks={setLinks}
         global={global}
+        linksFilter={linksFilter}
         key={index}
       />
     ))
 
-  return <Container>{links === null ? spinner : linkList()}</Container>
-}
+  const listLink = () =>
+    search.length > 0 ? linkContainer(linksFilter.arr) : linkContainer(links)
 
-export default Links
+  function displaySearch() {
+    if (displayInputs === false) return { top: '-70px', index: '-1' }
+
+    return { top: '0', index: '0' }
+  }
+
+  const spinnerLoading = <RotatingLines strokeColor="#5D9040" />
+
+  return (
+    <Container>
+      {links === null ? (
+        spinnerLoading
+      ) : (
+        <>
+          <InputContainer
+            top={displaySearch().top}
+            zIndex={displaySearch().index}
+          >
+            <div>
+              <SearchInput
+                search={search}
+                setSearch={setSearch}
+                links={links}
+                linksFilter={linksFilter}
+              />
+              <SelectFilter
+                select={select}
+                setSelect={setSelect}
+                search={search}
+                linksFilter={linksFilter}
+                links={links}
+              />
+            </div>
+            <Search onClick={() => setDisplayInputs(!displayInputs)} />
+          </InputContainer>
+          {listLink()}
+        </>
+      )}
+    </Container>
+  )
+}

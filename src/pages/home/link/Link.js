@@ -1,7 +1,7 @@
 import DeleteLink from './DeleteLink'
 import { LinkContainer } from './styles'
 
-export default function Link({ link, links, setLinks, global }) {
+export default function Link({ link, links, setLinks, linksFilter }) {
   const { id, shortUrl, url, visitCount } = link
 
   return (
@@ -12,7 +12,12 @@ export default function Link({ link, links, setLinks, global }) {
         <p>Quantidade de visitantes: {visitCount}</p>
       </span>
       <div>
-        <DeleteLink link={link} links={links} setLinks={setLinks} />
+        <DeleteLink
+          link={link}
+          links={links}
+          setLinks={setLinks}
+          linksFilter={linksFilter}
+        />
       </div>
     </LinkContainer>
   )
