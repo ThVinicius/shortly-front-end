@@ -13,6 +13,9 @@ export default function Form({ globalProps, linksProps, navigate, auxProps }) {
 
   function submit(event) {
     event.preventDefault()
+    if (loading === true) return
+
+    setLoading(true)
 
     const useGlobal = { global, setGlobal }
 
