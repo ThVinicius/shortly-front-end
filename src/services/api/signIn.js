@@ -1,20 +1,14 @@
 import { api } from './api'
 import { UNAUTHORIZED, UNPROCESSABLE_ENTITY } from '../../constants/HTTP'
 
-export default function signIn(
-  payload,
-  navigate,
-  setLoading,
-  global,
-  setGlobal
-) {
+export default function signIn(payload, navigate, setLoading, setGlobal) {
   const URL = '/signin'
 
   const promise = api.post(URL, payload)
 
   promise
     .then(({ data }) => {
-      setGlobal({ ...global, token: data })
+      setGlobal(prevGlobal => ({ ...prevGlobal, token: data }))
 
       const tokenStringify = JSON.stringify(data)
       localStorage.setItem('token', tokenStringify)

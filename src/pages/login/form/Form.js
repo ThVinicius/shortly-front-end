@@ -10,7 +10,7 @@ export default function Form({ navigate }) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
-  const { global, setGlobal } = useGlobal()
+  const { setGlobal } = useGlobal()
 
   function submit(event) {
     event.preventDefault()
@@ -21,7 +21,7 @@ export default function Form({ navigate }) {
 
     const payload = { email, password }
 
-    signIn(payload, navigate, setLoading, global, setGlobal)
+    signIn(payload, navigate, setLoading, setGlobal)
   }
 
   return (

@@ -17,7 +17,7 @@ export default function Auth() {
         <Link to="/">
           <h5>Ranking</h5>
         </Link>
-        <h5 onClick={() => logout(global, setGlobal, navigate)}>Sair</h5>
+        <h5 onClick={() => logout(setGlobal, navigate)}>Sair</h5>
       </div>
     </Header>
   )

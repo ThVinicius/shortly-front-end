@@ -4,8 +4,10 @@ import logout from '../../utils/logout'
 import { CONFLICT, TOKEN_EXPIRED, UNAUTHORIZED } from '../../constants/HTTP'
 import { UPGRADE_REQUIRED } from '../../constants/HTTP'
 
-function createLink(useGlobal, payload, setLoading, links, setLinks, navigate) {
+function createLink(useGlobal, payload, setLoading, linksProps, navigate, aux) {
   const { global, setGlobal } = useGlobal
+  const { links, setLinks } = linksProps
+  const { setSearch, setDisplayInputs } = aux
 
   const backUpLinks = links
 
@@ -19,6 +21,9 @@ function createLink(useGlobal, payload, setLoading, links, setLinks, navigate) {
     .then(() => {
       getLinks(global, setLinks, setGlobal, navigate)
 
+      setSearch('')
+      setDisplayInputs(false)
+
       setLoading(false)
     })
     .catch(({ response }) => {
@@ -30,13 +35,13 @@ function createLink(useGlobal, payload, setLoading, links, setLinks, navigate) {
         case UNAUTHORIZED:
           alert(`Faça o login para acessar essa área!`)
 
-          logout(global, setGlobal, navigate)
+          logout(setGlobal, navigate)
           break
 
         case TOKEN_EXPIRED:
           alert(`Sua sessão expirou!\nPor favor faça o login novamente`)
 
-          logout(global, setGlobal, navigate)
+          logout(setGlobal, navigate)
           break
 
         case UPGRADE_REQUIRED:
@@ -44,7 +49,7 @@ function createLink(useGlobal, payload, setLoading, links, setLinks, navigate) {
             `Ocorreu um erro com sua autenticação, por favor faça o login novamente`
           )
 
-          logout(global, setGlobal, navigate)
+          logout(setGlobal, navigate)
           break
 
         default:

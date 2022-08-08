@@ -1,5 +1,5 @@
-export default function logout(global, setGlobal, navigate) {
-  setGlobal({ ...global, token: null, customer: null })
+export default function logout(setGlobal, navigate) {
+  setGlobal(prevGlobal => ({ ...prevGlobal, token: null, customer: null }))
 
   localStorage.removeItem('token')
 

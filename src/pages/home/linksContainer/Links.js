@@ -5,11 +5,12 @@ import { Container, InputContainer, Search } from './styles'
 import SearchInput from './SearchInput'
 import SelectFilter from './SelectFilter'
 
-export default function Links({ links, setLinks, global }) {
-  const [search, setSearch] = useState('')
+function Links({ linksProps, global, searchProps, displayProps }) {
   const [select, setSelect] = useState('')
   const [linksFilter] = useState({ arr: [] })
-  const [displayInputs, setDisplayInputs] = useState(false)
+  const { links, setLinks } = linksProps
+  const { search, setSearch } = searchProps
+  const { displayInputs, setDisplayInputs } = displayProps
 
   const linkContainer = array =>
     array.map((link, index) => (
@@ -67,3 +68,5 @@ export default function Links({ links, setLinks, global }) {
     </Container>
   )
 }
+
+export default Links

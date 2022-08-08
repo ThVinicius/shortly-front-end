@@ -13,7 +13,7 @@ const Container = styled.div`
 `
 
 const InputContainer = styled.div`
-  width: 75vw;
+  width: 100%;
   height: 60px;
   display: flex;
   justify-content: end;
@@ -21,7 +21,7 @@ const InputContainer = styled.div`
   position: relative;
 
   div {
-    width: calc(75vw - 80px);
+    width: calc(100% - 80px);
     height: 60px;
     display: flex;
     justify-content: space-around;
@@ -34,6 +34,7 @@ const InputContainer = styled.div`
   }
 
   select {
+    width: 30%;
     height: calc(100% - 10px);
     background-color: #ffffff;
     border: 1px solid rgba(120, 177, 89, 0.25);

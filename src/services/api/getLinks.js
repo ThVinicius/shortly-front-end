@@ -23,13 +23,13 @@ export default function getLinks(global, setLinks, setGlobal, navigate) {
         case TOKEN_EXPIRED:
           alert(`Sua sessão expirou!\nPor favor faça o login novamente`)
 
-          logout(global, setGlobal, navigate)
+          logout(setGlobal, navigate)
           break
 
         case UNAUTHORIZED:
           alert(`Faça o login para acessar essa área!`)
 
-          logout(global, setGlobal, navigate)
+          logout(setGlobal, navigate)
           break
 
         case UPGRADE_REQUIRED:
@@ -37,7 +37,7 @@ export default function getLinks(global, setLinks, setGlobal, navigate) {
             `Ocorreu um erro com sua autenticação, por favor faça o login novamente`
           )
 
-          logout(global, setGlobal, navigate)
+          logout(setGlobal, navigate)
           break
 
         default:

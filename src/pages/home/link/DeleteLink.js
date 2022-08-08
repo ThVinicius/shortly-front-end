@@ -20,10 +20,8 @@ export default function DeleteLink({ link, links, setLinks, linksFilter }) {
 
     const useGlobal = { global, setGlobal }
 
-    const aux = { links, setLinks }
-
     if (confirm)
-      deleteUrl(id, useGlobal, aux, setLoading, navigate, linksFilter)
+      deleteUrl(id, useGlobal, setLinks, setLoading, navigate, linksFilter)
   }
 
   const spinner = <TailSpin height="45" width="45" color="#4fa94d" />

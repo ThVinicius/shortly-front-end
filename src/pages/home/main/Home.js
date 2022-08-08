@@ -6,8 +6,10 @@ import Form from '../form/Form'
 import Links from '../linksContainer/Links'
 
 export default function Home() {
-  const [links, setLinks] = useState(null)
   const { global, setGlobal } = useGlobal()
+  const [links, setLinks] = useState(null)
+  const [search, setSearch] = useState('')
+  const [displayInputs, setDisplayInputs] = useState(false)
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -23,13 +25,17 @@ export default function Home() {
   return (
     <>
       <Form
-        global={global}
-        setGlobal={setGlobal}
-        links={links}
-        setLinks={setLinks}
+        globalProps={{ global, setGlobal }}
+        linksProps={{ links, setLinks }}
         navigate={navigate}
+        auxProps={{ setSearch, setDisplayInputs }}
       />
-      <Links links={links} setLinks={setLinks} global={global} />
+      <Links
+        linksProps={{ links, setLinks }}
+        global={global}
+        searchProps={{ search, setSearch }}
+        displayProps={{ displayInputs, setDisplayInputs }}
+      />
     </>
   )
 }

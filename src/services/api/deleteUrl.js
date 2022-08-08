@@ -3,12 +3,10 @@ import logout from '../../utils/logout'
 import { TOKEN_EXPIRED, UNAUTHORIZED } from '../../constants/HTTP'
 import { UPGRADE_REQUIRED } from '../../constants/HTTP'
 
-function deleteUrl(id, useGlobal, aux, setLoading, navigate, linksFilter) {
+function deleteUrl(id, useGlobal, setLinks, setLoading, navigate, linksFilter) {
   setLoading(true)
 
   const { global, setGlobal } = useGlobal
-
-  const { links, setLinks } = aux
 
   const URL = `/urls/${id}`
 
@@ -22,20 +20,20 @@ function deleteUrl(id, useGlobal, aux, setLoading, navigate, linksFilter) {
         linksFilter.arr = linksFilter.arr.filter(link => link.id !== id)
       }
 
-      setLinks(links.filter(link => link.id !== id))
+      setLinks(prevLinks => prevLinks.filter(link => link.id !== id))
     })
     .catch(({ response }) => {
       switch (response.status) {
         case TOKEN_EXPIRED:
           alert(`Sua sessão expirou!\nPor favor faça o login novamente`)
 
-          logout(global, setGlobal, navigate)
+          logout(setGlobal, navigate)
           break
 
         case UNAUTHORIZED:
           alert(`Faça o login para acessar essa área!`)
 
-          logout(global, setGlobal, navigate)
+          logout(setGlobal, navigate)
           break
 
         case UPGRADE_REQUIRED:
@@ -43,7 +41,7 @@ function deleteUrl(id, useGlobal, aux, setLoading, navigate, linksFilter) {
             `Ocorreu um erro com sua autenticação, por favor faça o login novamente`
           )
 
-          logout(global, setGlobal, navigate)
+          logout(setGlobal, navigate)
           break
 
         default:

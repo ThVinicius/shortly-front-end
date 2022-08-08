@@ -10,7 +10,7 @@ export default function SearchInput({ search, setSearch, links, linksFilter }) {
   return (
     <Input
       placeholder="Pesquisar pela url"
-      width="40vw"
+      width="60%"
       value={search}
       onChange={hanleChangeSearch}
     />
