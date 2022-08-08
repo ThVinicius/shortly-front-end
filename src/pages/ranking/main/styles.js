@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { IoTrophySharp } from 'react-icons/io5'
+import { Link } from 'react-router-dom'
 
 const IconContainer = styled.div`
   display: flex;
@@ -17,4 +18,12 @@ const TrophySharp = styled(IoTrophySharp)`
   color: #ffd233;
 `
 
-export { IconContainer, TrophySharp }
+const Anchor = styled(Link)`
+  font: normal 700 36px 'Lexend Deca', sans-serif;
+  color: #000000;
+  margin-top: 5vh;
+  padding-bottom: 20px;
+  cursor: pointer;
+`
+
+export { IconContainer, TrophySharp, Anchor }
