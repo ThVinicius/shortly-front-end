@@ -18,6 +18,9 @@
 # Sumário
 
 - [Descrição](#description)
+- [Rotas do Shortly](#routes)
+  - [Rota /](#start)
+  - [Rota /home](#home)
 - [Environment Variables](#environment-variables)
 - [Run Locally](#run-locally)
 
@@ -33,9 +36,45 @@ Shortly é um sistema de encurtador de URLs
 
 - Criar uma conta e acessa-la.
 - Criar um link encurtado
+- Acessar um link encurtado
 - Visualizar o ranking de usuários com mais links e com mais visitas
 
 </br>
+
+<div id='routes'/>
+
+## Rotas do Shortly
+
+<div id='start'/>
+
+### Rota /
+
+Nessa rota é possivel:
+
+- Visualizar o ranking
+- Acessar a página de cadastro
+- Acessar a página de acesso
+
+<h1 align="center" >
+<img alt="gif" src="./src/assets/videos/ranking.gif">
+</h1>
+
+#
+
+<div id='home'/>
+
+### Rota /home
+
+Nessa é possivel:
+
+- Criar um link encurtado
+- Acessar um link encurtado
+- Deletar um link encurtado
+- Filtrar seus links
+
+<h1 align="center" >
+<img alt="gif" src="./src/assets/videos/app.gif">
+</h1>
 
 <div id='environment-variables'/>
 
